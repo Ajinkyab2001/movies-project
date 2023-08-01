@@ -4,6 +4,12 @@ import Movie from './Movie';
 import classes from './MoviesList.module.css';
 
 const MovieList = (props) => {
+
+  const handleDeleteMovie = (key) => {
+    
+    const updatedMovies = movies.filter((movie) => movie.key !== key);
+    setMovies(updatedMovies);
+  };
   return (
     <ul className={classes['movies-list']}>
       {props.movies.map((movie) => (
@@ -12,6 +18,7 @@ const MovieList = (props) => {
           title={movie.title}
           releaseDate={movie.releaseDate}
           openingText={movie.openingText}
+          onDelete={handleDeleteMovie} 
         />
       ))}
     </ul>
